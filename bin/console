@@ -1,0 +1,46 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(__DIR__ . '/..');
+$dotenv->load();
+
+$command = $argv[1] ?? 'help';
+
+switch ($command) {
+    case 'migrate':
+        echo "Running database migrations...\n";
+        require __DIR__ . '/../database/migrations/run.php';
+        echo "Migrations completed!\n";
+        break;
+        
+    case 'seed':
+        echo "Seeding database...\n";
+        require __DIR__ . '/../database/seeds/run.php';
+        echo "Database seeded!\n";
+        break;
+        
+    case 'cache:clear':
+        echo "Clearing cache...\n";
+        // Clear Redis cache
+        $redis = new Predis\Client([
+            'host' => $_ENV['REDIS_HOST'],
+            'port' => $_ENV['REDIS_PORT']
+        ]);
+        $redis->flushdb();
+        echo "Cache cleared!\n";
+        break;
+        
+    case 'help':
+    default:
+        echo "ShopFlow Console\n\n";
+        echo "Available commands:\n";
+        echo "  migrate        Run database migrations\n";
+        echo "  seed           Seed database with sample data\n";
+        echo "  cache:clear    Clear Redis cache\n";
+        echo "  help           Show this help message\n";
+        break;
+}

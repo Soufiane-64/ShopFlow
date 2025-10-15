@@ -1,0 +1,480 @@
+  {
+  "title": "ShopFlow - E-Commerce Project Management System",
+  "overview": {
+    "de": "ShopFlow ist ein spezialisiertes Projektmanagement-Tool für E-Commerce-Entwicklungsteams, das die Koordination von Shop-Projekten, Release-Management und Qualitätssicherung vereint.",
+    "en": "ShopFlow is a specialized project management tool for e-commerce development teams that combines shop project coordination, release management, and quality assurance."
+  },
+  "table_of_contents": [
+    "Motivation",
+    "Hauptfunktionen | Core Features",
+    "Technischer Stack | Technical Stack",
+    "Architektur | Architecture",
+    "Installation",
+    "Verwendung | Usage",
+    "Features im Detail | Detailed Features",
+    "API Dokumentation | API Documentation",
+    "Testing",
+    "Deployment",
+    "Roadmap",
+    "Kontakt | Contact"
+  ],
+  "motivation": [
+    "Komplexe Projektkoordination zwischen internen Teams und externen Freelancern",
+    "Multi-Shop-System-Management (Shopware, Modified, Commerce:SEO)",
+    "Transparente Release-Prozesse mit GIT-Integration",
+    "Effiziente Qualitätssicherung für Online-Shops",
+    "Klare Kundenkommunikation bei technischen Anforderungen"
+  ],
+  "core_features": {
+    "dashboard_project_overview": [
+      "Multi-Projekt-Ansicht mit Echtzeit-Status",
+      "Kanban/SCRUM Board Integration",
+      "Ressourcen-Auslastung (Team + Freelancer)",
+      "Terminüberwachung mit automatischen Warnungen"
+    ],
+    "shop_system_management": [
+      "Unterstützung für Shopware 5/6, xtc:Modified, Commerce:SEO",
+      "Plugin/Modul-Abhängigkeiten-Tracker",
+      "Versions-Vergleich und Migrations-Planung",
+      "System-Anforderungen Checker"
+    ],
+    "release_rollout_management": [
+      "GIT-Workflow Visualisierung",
+      "Automatische Release Notes Generierung",
+      "Environment Management (Dev/Staging/Production)",
+      "Deployment-Pipeline mit Rollback-Funktion"
+    ],
+    "quality_assurance": [
+      "E-Commerce spezifische Test-Checklisten",
+      "Bug-Tracking mit Prioritäten",
+      "Automatisierte Testing-Integration",
+      "Performance-Monitoring für Shops"
+    ],
+    "client_portal": [
+      "Anforderungs-Management",
+      "Technische Spezifikationen aus Kundenwünschen",
+      "Progress Reports mit Visualisierung",
+      "Change Request Workflow"
+    ],
+    "documentation": [
+      "Automatische Code-Dokumentation",
+      "Projekt-Wiki Integration",
+      "API-Dokumentation Generator",
+      "Technische Entscheidungs-Logs"
+    ]
+  },
+  "tech_stack": {
+    "backend": ["PHP 8.2+", "Composer (Dependency Management)", "PSR-4 Autoloading", "PSR-7 HTTP Messages"],
+    "frameworks_libraries": ["Slim Framework 4", "Doctrine ORM", "Monolog", "PHPUnit", "PHP-CS-Fixer"],
+    "frontend": ["HTML5", "CSS3", "Tailwind CSS 3.x", "Vue.js 3", "Alpine.js", "Chart.js"],
+    "database": ["MySQL 8.0+", "Redis (Caching & Sessions)"],
+    "devops_tools": ["GIT", "Docker & Docker Compose", "GitHub Actions (CI/CD)", "Nginx", "Webpack"]
+  },
+  "architecture": {
+    "project_structure_tree": [
+      "shopflow/",
+      "├── config/",
+      "│   ├── database.php",
+      "│   ├── routes.php",
+      "│   └── settings.php",
+      "├── public/",
+      "│   ├── index.php",
+      "│   ├── assets/",
+      "│   │   ├── css/",
+      "│   │   ├── js/",
+      "│   │   └── images/",
+      "├── src/",
+      "│   ├── Controllers/",
+      "│   │   ├── ProjectController.php",
+      "│   │   ├── ReleaseController.php",
+      "│   │   ├── QAController.php",
+      "│   │   └── ClientController.php",
+      "│   ├── Models/",
+      "│   │   ├── Project.php",
+      "│   │   ├── Release.php",
+      "│   │   ├── Task.php",
+      "│   │   └── Client.php",
+      "│   ├── Services/",
+      "│   │   ├── GitService.php",
+      "│   │   ├── ShopwareService.php",
+      "│   │   ├── NotificationService.php",
+      "│   │   └── DocumentationService.php",
+      "│   ├── Middleware/",
+      "│   │   ├── AuthMiddleware.php",
+      "│   │   └── ValidationMiddleware.php",
+      "│   └── Helpers/",
+      "│       ├── DateHelper.php",
+      "│       └── StringHelper.php",
+      "├── tests/",
+      "│   ├── Unit/",
+      "│   ├── Integration/",
+      "│   └── E2E/",
+      "├── database/",
+      "│   ├── migrations/",
+      "│   └── seeds/",
+      "├── docs/",
+      "│   ├── api/",
+      "│   ├── user-guide/",
+      "│   └── development/",
+      "├── docker/",
+      "│   ├── Dockerfile",
+      "│   └── docker-compose.yml",
+      "├── .github/",
+      "│   └── workflows/",
+      "│       └── ci.yml",
+      "├── composer.json",
+      "├── package.json",
+      "├── phpunit.xml",
+      "└── README.md"
+    ],
+    "design_patterns": [
+      "MVC (Model-View-Controller)",
+      "Repository Pattern",
+      "Service Layer",
+      "Dependency Injection",
+      "Factory Pattern"
+    ]
+  },
+  "installation": {
+    "prerequisites": ["PHP >= 8.2", "Composer", "MySQL >= 8.0", "Node.js >= 18.x", "Git", "Docker (optional)"],
+    "steps": [
+      {
+        "step": "Repository klonen",
+        "commands": ["git clone https://github.com/yourusername/shopflow.git", "cd shopflow"]
+      },
+      {
+        "step": "Dependencies installieren",
+        "commands": ["composer install", "npm install"]
+      },
+      {
+        "step": "Umgebungskonfiguration",
+        "commands": ["cp .env.example .env"],
+        "note": "Bearbeite .env und trage Datenbank-Credentials ein."
+      },
+      {
+        "step": "Datenbank einrichten",
+        "commands": [
+          "mysql -u root -p -e \"CREATE DATABASE shopflow CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\"",
+          "php bin/console migrate",
+          "php bin/console seed"
+        ],
+        "optional": ["Seed-Schritt ist optional"]
+      },
+      {
+        "step": "Assets kompilieren",
+        "commands": ["npm run build", "npm run dev"]
+      },
+      {
+        "step": "Development Server starten",
+        "commands": ["php -S localhost:8000 -t public/"]
+      },
+      {
+        "step": "Alternative: Docker",
+        "commands": [
+          "docker-compose up -d",
+          "docker-compose exec app composer install",
+          "docker-compose exec app php bin/console migrate"
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "dashboard_url": "http://localhost:8000",
+    "default_login": {
+      "email": "admin@shopflow.dev",
+      "password": "shopflow2024"
+    },
+    "first_project_steps": [
+      "Dashboard → \"Neues Projekt\"",
+      "Projekttyp wählen (Shopware / Modified / Commerce:SEO)",
+      "Team-Mitglieder zuweisen",
+      "GIT-Repository verknüpfen",
+      "Milestones definieren"
+    ]
+  },
+  "detailed_features": {
+    "project_dashboard": {
+      "kanban_board": {
+        "columns": ["Backlog", "In Progress", "Review", "Testing", "Done"],
+        "features": ["Drag & Drop", "Farbcodierung nach Priorität", "Swimlanes", "Konfigurierbare WIP-Limits"],
+        "api_example": {
+          "method": "POST",
+          "endpoint": "/api/tasks/{id}/move",
+          "body": {
+            "column": "in-progress",
+            "position": 2,
+            "assignee_id": 5
+          }
+        }
+      },
+      "sprint_planning": ["Sprint-Erstellung", "Velocity-Tracking", "Burndown Charts", "Capacity Planning", "Retrospektiven-Notizen"]
+    },
+    "shop_system_integration": {
+      "shopware_specific": ["Plugin-Kompatibilitätsprüfung", "Theme-Verwaltung", "Datenbank-Schema-Vergleich", "API-Endpoint-Testing", "Performance-Profiling"],
+      "modified_commerce_seo": ["Modul-Abhängigkeiten", "Template-Struktur-Analyse", "Upgrade-Pfad-Planung"],
+      "service_example_php": "class ShopwareService { public function analyzePluginCompatibility($pluginName, $shopwareVersion) { return { 'compatible': true, 'version': '6.5.0', 'dependencies': [], 'conflicts': [] }; } }"
+    },
+    "git_integration": {
+      "branch_management": ["Feature-Branches automatisch erstellen", "Branch-Status-Übersicht", "Merge-Request-Tracking", "Konflikt-Erkennung"],
+      "release_workflow_steps": [
+        "Feature-Branch erstellen",
+        "Development → Staging merge",
+        "QA Testing durchführen",
+        "Staging → Production merge",
+        "Tag erstellen (semantic versioning)",
+        "Deployment ausführen"
+      ],
+      "auto_release_notes_markdown": "## Version 2.3.0 - 2025-10-09\n\n### New Features\n- Shopware 6.6 Kompatibilität\n- Erweiterte Produktfilter\n- Newsletter-Integration\n\n### Bugfixes\n- Checkout-Prozess optimiert\n- Mobile-Ansicht korrigiert\n\n### Breaking Changes\n- API Endpoint /v1/products entfernt"
+    },
+    "quality_assurance": {
+      "checklist_ecommerce_essentials": [
+        "Warenkorb-Funktionalität",
+        "Checkout-Prozess (alle Payment-Provider)",
+        "Responsive Design (Mobile/Tablet/Desktop)",
+        "SEO-Meta-Tags",
+        "Performance (PageSpeed > 90)",
+        "Security (SQL-Injection, XSS)",
+        "DSGVO-Konformität",
+        "Barrierefreiheit (WCAG 2.1)"
+      ],
+      "automated_tests_phpunit_example": "class CheckoutTest extends TestCase { public function testCompleteCheckoutProcess() { /* ... */ } }"
+    },
+    "client_portal": {
+      "requirements_management": ["Strukturierter Anforderungskatalog", "Technische Machbarkeitsprüfung", "Aufwandsschätzung (Story Points)", "Priorisierung mit Client"],
+      "communication_tools": ["Integrierter Chat", "Kommentare bei Tasks", "E-Mail-Benachrichtigungen", "Automatische Statusreports"]
+    }
+  },
+  "api": {
+    "base_url": "https://api.shopflow.dev/v1",
+    "authentication_header": "Authorization: Bearer {your_api_token}",
+    "endpoints": {
+      "projects": {
+        "GET /projects": "Liste aller Projekte",
+        "POST /projects": "Neues Projekt erstellen",
+        "GET /projects/{id}": "Projekt-Details",
+        "PUT /projects/{id}": "Projekt aktualisieren",
+        "DELETE /projects/{id}": "Projekt löschen"
+      },
+      "tasks": {
+        "GET /projects/{id}/tasks": "Alle Tasks eines Projekts",
+        "POST /projects/{id}/tasks": "Task erstellen",
+        "PUT /tasks/{id}": "Task aktualisieren",
+        "DELETE /tasks/{id}": "Task löschen",
+        "POST /tasks/{id}/move": "Task verschieben"
+      },
+      "releases": {
+        "GET /releases": "Alle Releases",
+        "POST /releases": "Release erstellen",
+        "GET /releases/{id}": "Release Details",
+        "POST /releases/{id}/deploy": "Release deployen",
+        "POST /releases/{id}/rollback": "Release zurückrollen"
+      },
+      "qa": {
+        "GET /qa/checklists": "Test-Checklisten",
+        "POST /qa/bugs": "Bug melden",
+        "GET /qa/reports": "QA Reports"
+      }
+    },
+    "example_request_curl": "curl -X POST https://api.shopflow.dev/v1/projects -H \"Authorization: Bearer abc123...\" -H \"Content-Type: application/json\" -d '{\"name\":\"Shop-Relaunch 2025\",\"type\":\"shopware6\",\"client_id\":42,\"start_date\":\"2025-11-01\",\"deadline\":\"2025-12-31\"}'",
+    "example_response": {
+      "success": true,
+      "data": {
+        "id": 156,
+        "name": "Shop-Relaunch 2025",
+        "type": "shopware6",
+        "status": "planning",
+        "progress": 0,
+        "team_members": [],
+        "created_at": "2025-10-09T14:30:00Z"
+      }
+    }
+  },
+  "testing": {
+    "unit": {
+      "run_all": "composer test",
+      "coverage": "composer test:coverage",
+      "suite": "./vendor/bin/phpunit --testsuite=Unit"
+    },
+    "integration": "./vendor/bin/phpunit --testsuite=Integration",
+    "e2e": "npm run test:e2e",
+    "code_quality": {
+      "php_cs_fixer": "composer cs-fix",
+      "phpstan": "composer analyse",
+      "security_check": "composer security-check"
+    }
+  },
+  "deployment": {
+    "production_checklist": [
+      ".env Datei für Production konfiguriert",
+      "Datenbank-Backups eingerichtet",
+      "SSL-Zertifikat installiert",
+      "Cache-System (Redis) aktiviert",
+      "Error-Logging konfiguriert",
+      "Performance-Monitoring eingerichtet",
+      "Security Headers gesetzt",
+      "CORS richtig konfiguriert"
+    ],
+    "github_actions_workflow_yaml": "name: Deploy to Production\n\non:\n  push:\n    branches: [ main ]\n\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v2\n      - name: Deploy to Server\n        run: |\n          ssh user@server 'cd /var/www/shopflow && git pull'\n          ssh user@server 'cd /var/www/shopflow && composer install --no-dev'\n          ssh user@server 'cd /var/www/shopflow && php bin/console migrate'\n",
+    "docker": {
+      "build": "docker build -t shopflow:latest .",
+      "run": "docker run -d --name shopflow -p 80:80 -e DB_HOST=mysql -e DB_NAME=shopflow shopflow:latest"
+    }
+  },
+  "roadmap": {
+    "phase_1_mvp": {
+      "status": "done",
+      "items": ["Basis-Dashboard", "Projekt-Management", "Task-Tracking", "GIT-Integration"]
+    },
+    "phase_2_q4_2025": {
+      "status": "in_progress",
+      "items": ["Erweiterte Shop-System-Integration", "Automatisierte Tests", "Client Portal", "Mobile App (React Native)"]
+    },
+    "phase_3_q1_2026": {
+      "status": "planned",
+      "items": ["AI-gestützte Aufwandsschätzung", "Automatische Code-Reviews", "Advanced Analytics", "Multi-Tenant-Fähigkeit"]
+    },
+    "phase_4_q2_2026": {
+      "status": "planned",
+      "items": ["Marketplace für Plugins", "White-Label-Lösung", "API v2 mit GraphQL", "Real-time Collaboration"]
+    }
+  },
+  "technical_highlights": {
+    "performance": [
+      "Response Time < 200ms (durchschnittlich)",
+      "Database Queries optimiert mit Eager Loading",
+      "Caching via Redis für Session & API-Responses",
+      "Asset Optimization: Gzip, Minification, CDN"
+    ],
+    "security": [
+      "Authentication: JWT mit Refresh Tokens",
+      "Authorization: RBAC",
+      "Input Validation: Server- & Client-seitig",
+      "SQL Injection: Prepared Statements (PDO)",
+      "XSS Protection: Output Escaping",
+      "CSRF Protection: Token-basiert"
+    ],
+    "code_quality": [
+      "PSR-12 Coding Standards",
+      "SOLID Principles",
+      "Test Coverage > 80%",
+      "Code Review erforderlich für alle Merges"
+    ]
+  },
+  "developer_guidelines": {
+    "git_workflow_commands": [
+      "git checkout -b feature/neue-funktion",
+      "git commit -m \"feat: Neue Funktion implementiert\"",
+      "git push origin feature/neue-funktion"
+    ],
+    "pull_request_notes": [
+      "PR erstellen, Review abwarten, nach Approval Merge in develop"
+    ],
+    "conventional_commits": [
+      "feat: Neue Funktion",
+      "fix: Bugfix",
+      "docs: Dokumentation",
+      "style: Code-Formatierung",
+      "refactor: Code-Refactoring",
+      "test: Tests hinzugefügt",
+      "chore: Maintenance"
+    ],
+    "code_review_checklist": [
+      "Code folgt PSR-12 Standards",
+      "Tests geschrieben & bestanden",
+      "Dokumentation aktualisiert",
+      "Keine Security-Issues",
+      "Performance berücksichtigt"
+    ]
+  },
+  "resources": {
+    "docs": {
+      "user_guide_de": "docs/user-guide/de/",
+      "developer_guide_de": "docs/development/de/",
+      "api_reference": "docs/api/",
+      "architecture_decision_records": "docs/adr/"
+    },
+    "external_links": {
+      "shopware_docs": "https://docs.shopware.com/",
+      "php_best_practices": "https://phptherightway.com/",
+      "psr_standards": "https://www.php-fig.org/psr/"
+    }
+  },
+  "team_contributions": {
+    "creator": {
+      "name": "Dein Name",
+      "github": "https://github.com/dein-username",
+      "linkedin": "https://linkedin.com/in/dein-profil",
+      "email": "deine.email@example.com"
+    },
+    "contributing": {
+      "guidelines_link": "CONTRIBUTING.md",
+      "steps": [
+        "Repository forken",
+        "Feature Branch erstellen",
+        "Änderungen committen",
+        "Branch pushen",
+        "Pull Request erstellen"
+      ]
+    }
+  },
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "why_this_project": [
+    "PHP-Entwicklung (PHP 8+ Features & Best Practices)",
+    "E-Commerce-Expertise (Shopware, Modified, Commerce:SEO)",
+    "Projektmanagement (SCRUM/Kanban)",
+    "GIT-Workflow (Release-Management, Branching)",
+    "Qualitätssicherung (Testing, Documentation, Code Reviews)",
+    "Full-Stack-Entwicklung (Frontend & Backend Integration)",
+    "DevOps (CI/CD, Docker, Deployment-Automatisierung)",
+  "Praxisnutzen für E-Commerce-Entwicklungsteams"
+  ],
+  "contact": {
+    "email": "deine.email@example.com",
+    "linkedin": "https://linkedin.com/in/dein-profil",
+    "github": "https://github.com/dein-username",
+    "portfolio": "https://deine-website.com"
+  },
+  "employer_alignment": {
+    "highlights": [
+      "Release- und Rolloutmanagement mit GIT (Tags, Changelogs, Rollback)",
+      "Shopware 6 Beispiel-Plugin inkl. Migration & Admin-Config",
+      "SCRUM/Kanban-Templates (DoD, WIP, Sprint-Planung)",
+      "E-Commerce-QA-Checklisten als JSON + HTML-Report",
+      "Zweisprachige README und Client-Anforderungsformular"
+    ],
+    "shopware_plugin_demo": {
+      "name": "ShopFlowDemo",
+      "features": [
+        "DB-Migration: product_attribute shopflow_flag",
+        "Admin-Config: Toggle für Feature-Flag",
+        "Storefront-Block: Hinweisbanner bei aktiviertem Flag"
+      ],
+      "test_commands": [
+        "bin/console plugin:install --activate ShopFlowDemo",
+        "bin/console database:migrate --all",
+        "phpunit --testsuite=Integration"
+      ]
+    },
+    "release_playbook": {
+      "branches": ["main", "develop", "feature/*", "hotfix/*"],
+      "steps": [
+        "PR mit Akzeptanzkriterien & Tests",
+        "CI: Lint, PHPUnit, Build",
+        "Tagging (semver) + Release Notes",
+        "Staging-Deploy, QA-Checkliste reporten",
+        "Prod-Deploy, Rollback-Option demonstrieren"
+      ]
+    }
+  },
+  "demo_script": [
+    "Login ins Client-Portal, Anforderung absenden",
+    "System generiert Tech-Spec + Ticket (JSON)",
+    "Feature-Branch erstellen, Commit/PR",
+    "CI läuft, Release Notes generieren",
+    "Staging-Deploy, QA-Checkliste reporten",
+    "Prod-Deploy, Rollback-Option demonstrieren"
+  ]
+}
